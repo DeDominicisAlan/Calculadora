@@ -1,0 +1,33 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+#calculadora{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    flex-direction: column;
+}
+
+#pantalla{
+    width: 50vw;
+    height: 20vh;
+    margin: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#botones{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+button{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    height: 50px;
+    width: 50px;
+}
