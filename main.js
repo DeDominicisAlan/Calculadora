@@ -10,82 +10,101 @@ const nro9 = document.querySelector('#nro9');
 const nro0 = document.querySelector('#nro0');
 const igual = document.querySelector('#igual');
 const btnsuma = document.querySelector('#suma');
+const btnresta = document.querySelector('#resta');
+const btnprod = document.querySelector('#producto');
+const btndiv = document.querySelector('#division');
 const limpiar = document.querySelector('#limpiar')
 const pres = document.querySelector('#pantalla-res')
 
-var resultado = 0;
+var resultado;
 var n1 = '',n2 = '';
 var operadorClick = false;
 var ultOpr;
 
 function clean(){
     resultado = 0;
-    n1 = 0;
-    n2 = 0;
-    return pres.innerHTML = '';
+    n1 = '';
+    n2 = '';
+    pres.innerHTML = '';
 
 }
 
 limpiar.addEventListener('click', () => clean());
 
-nro1.addEventListener('click', () =>  {pres.innerHTML += 1; numero(1)})
-nro2.addEventListener('click', () =>  {pres.innerHTML += 2; numero(2)})
-nro3.addEventListener('click', () =>  {pres.innerHTML += 3; numero(3)})
-nro4.addEventListener('click', () =>  {pres.innerHTML += 4; numero(4)})
-nro5.addEventListener('click', () =>  {pres.innerHTML += 5; numero(5)})
-nro6.addEventListener('click', () =>  {pres.innerHTML += 6; numero(6)})
-nro7.addEventListener('click', () =>  {pres.innerHTML += 7; numero(7)})
-nro8.addEventListener('click', () =>  {pres.innerHTML += 8; numero(8)})
-nro9.addEventListener('click', () =>  {pres.innerHTML += 9; numero(9)})
-nro0.addEventListener('click', () =>  {pres.innerHTML += 0; numero(0)})
+nro1.addEventListener('click', () =>  {numero(1)})
+nro2.addEventListener('click', () =>  {numero(2)})
+nro3.addEventListener('click', () =>  {numero(3)})
+nro4.addEventListener('click', () =>  {numero(4)})
+nro5.addEventListener('click', () =>  {numero(5)})
+nro6.addEventListener('click', () =>  {numero(6)})
+nro7.addEventListener('click', () =>  {numero(7)})
+nro8.addEventListener('click', () =>  {numero(8)})
+nro9.addEventListener('click', () =>  {numero(9)})
+nro0.addEventListener('click', () =>  {numero(0)})
 
 btnsuma.addEventListener('click', () => {operar('+')})
-igual.addEventListener('click', () => {pres.innerHTML = resultado})
+btnresta.addEventListener('click', () => {operar('-')})
+btnprod.addEventListener('click', () => {operar('*')})
+btndiv.addEventListener('click', () => {operar('/')})
+igual.addEventListener('click', () => {eventoIgual(), pres.innerHTML = n1, console.log(n1)})
 
 function numero(n){
+    pres.innerHTML += n;
     if(operadorClick == false){
-        n1 += n;
+        n1 = pres.innerHTML;
+        
     }
     else{
-        n2 += n;
+        n2 += `${n}`;
     }
+    console.log(n1+' '+n2)
 }
 
-
-function suma(n1,n2){
-    resultado = Math.floor(n1) + Math.floor(n2);
-    n1 = 0;
-    n2 = 0;
+function suma(){
+    n1 = Math.floor(n1) + Math.floor(n2);
+    console.log(n1)
 }
 
-function resta(n1,n2){
-    return n1 - n2;
+function resta(){
+    n1 = Math.floor(n1) - Math.floor(n2);
+    console.log(n1)
 }
 
-function multiplicar(n1,n2){
-    return n1 * n2;
+function multiplicar(){
+    n1 = Math.floor(n1) * Math.floor(n2);
+    console.log(n1)
 }
 
-function dividir(n1,n2){
-    return n1 / n2;
+function dividir(){
+    n1 = Math.floor(n1) / Math.floor(n2);
+    console.log(n1)
+}
+
+function eventoIgual(){
+    console.log(n1+' eventoigual '+n2)
+    if(ultOpr == '+'){
+        suma();
+    }else if(ultOpr == '-'){
+        resta();}
+    else if(ultOpr == '*'){
+        multiplicar();}
+    else if(ultOpr == '/'){
+        dividir();}
+    ultOpr = undefined;
 }
 
 function operar(op){
-    if(ultOpr == undefined){
-        ultOpr = op;
-        operadorClick = true;
-    }else{
-    if(op == '+'){
-        suma(n1,n2);
-        pres.innerHTML = '';
-        pres.innerHTML = resultado;
-        }
+    pres.innerHTML = '';
+    ultOpr = op;
+    if(operadorClick == false){
+        operadorClick = true;}
+    if(op == '+')
+        suma();
     else if(op == '-')
-        resta(n1,n2);
+        resta();
     else if(op == '*')
-        multiplicar(n1,n2)
-    else
-        dividir(n1,n2)
-    pres.innerHTML = resultado;
-    }
+        multiplicar();
+    else if(op == '/')
+        dividir();
+    n2 = '';
 }

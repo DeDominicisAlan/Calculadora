@@ -1,4 +1,6 @@
 body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
     padding: 0;
     margin: 0;
     height: 100vh;
@@ -26,10 +28,21 @@ body{
     border: 1px solid black;
     border-radius: 5px;
     background-color: white;
+    padding: 5px;
+}
+
+#pantalla-div{
+    margin: 0 10px;
     display: flex;
     align-items: flex-end;
     justify-content: end;
-    padding: 5px;
+}
+
+#pantalla-res{
+    margin: 15px 5px;
+    font-size: 30px;
+    display: flex;
+    justify-content: end;
 }
 
 #botones{
