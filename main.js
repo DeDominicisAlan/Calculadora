@@ -20,16 +20,16 @@ const borrar = document.querySelector('#borrar');
 const punto = document.querySelector('#punto')
 
 var resultado;
-var n1 = '',n2 = '';
+var n1 = "",n2 = "";
 var operadorClick = false;
 var ultOpr;
 var puntoClick = false;
 
 function clean(){
-    n1 = '';
-    n2 = '';
-    pres.innerHTML = '';
-    resParcial.innerHTML = '';
+    n1 = "";
+    n2 = "";
+    pres.innerHTML = "";
+    resParcial.innerHTML = "";
     operadorClick = false;
     puntoClick = false;
 }
@@ -56,7 +56,8 @@ igual.addEventListener('click', () => {eventoIgual(), pres.innerHTML = n1, conso
 borrar.addEventListener('click',() => {})
 
 function suma(){
-    n1 = Math.floor(n1) + Math.floor(n2);
+    if(n2 != "")
+    n1 = parseFloat(n1) + parseFloat(n2);
     console.log(n1)
 }
 
@@ -66,11 +67,12 @@ function resta(){
 }
 
 function multiplicar(){
-    if(n2 != '')
+    if(n2 != "")
         n1 = Math.floor(n1) * Math.floor(n2);
 }
 
 function dividir(){
+    if(n2 != "")
     n1 = Math.floor(n1) / Math.floor(n2);
 }
 
@@ -98,11 +100,12 @@ function numero(n){
         n2 += `${n}`;
         resParcial.innerHTML += n;
     }
+    console.log(n1)
 }
 
 function operar(op){
     puntoClick = false;
-    pres.innerHTML = '';
+    pres.innerHTML = "";
     if(operadorClick == false){
         operadorClick = true;
         if(op == '+')
@@ -113,7 +116,7 @@ function operar(op){
         multiplicar();
     else if(op == '/')
         dividir();
-        n2 = '';}
+        n2 = "";}
     else{
         if(ultOpr == '+')
         suma();
@@ -123,10 +126,10 @@ function operar(op){
         multiplicar();
     else if(ultOpr == '/')
         dividir();
-        n2 = '';
+        n2 = "";
     }
     ultOpr = op;
     console.log(n1);
-    n2 = '';
+    n2 = "";
     resParcial.innerHTML += op;
 }
