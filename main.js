@@ -17,11 +17,13 @@ const limpiar = document.querySelector('#limpiar')
 const pres = document.querySelector('#pantalla-res')
 const resParcial = document.querySelector('#resultado-parcial');
 const borrar = document.querySelector('#borrar');
+const punto = document.querySelector('#punto')
 
 var resultado;
 var n1 = '',n2 = '';
 var operadorClick = false;
 var ultOpr;
+var puntoClick = false;
 
 function clean(){
     n1 = '';
@@ -29,6 +31,7 @@ function clean(){
     pres.innerHTML = '';
     resParcial.innerHTML = '';
     operadorClick = false;
+    puntoClick = false;
 }
 
 limpiar.addEventListener('click', () => clean());
@@ -43,6 +46,7 @@ nro7.addEventListener('click', () =>  {numero(7)})
 nro8.addEventListener('click', () =>  {numero(8)})
 nro9.addEventListener('click', () =>  {numero(9)})
 nro0.addEventListener('click', () =>  {numero(0)})
+punto.addEventListener('click', () => {if(puntoClick == false) numero('.'); puntoClick = true})
 
 btnsuma.addEventListener('click', () => {operar('+')})
 btnresta.addEventListener('click', () => {operar('-')})
@@ -68,7 +72,6 @@ function multiplicar(){
 
 function dividir(){
     n1 = Math.floor(n1) / Math.floor(n2);
-    console.log(n1)
 }
 
 function eventoIgual(){
@@ -98,11 +101,10 @@ function numero(n){
 }
 
 function operar(op){
+    puntoClick = false;
     pres.innerHTML = '';
-    ultOpr = op;
     if(operadorClick == false){
-        operadorClick = true;}
-    else{
+        operadorClick = true;
         if(op == '+')
         suma();
     else if(op == '-')
@@ -111,10 +113,19 @@ function operar(op){
         multiplicar();
     else if(op == '/')
         dividir();
+        n2 = '';}
+    else{
+        if(ultOpr == '+')
+        suma();
+    else if(ultOpr == '-')
+        resta();
+    else if(ultOpr == '*')
+        multiplicar();
+    else if(ultOpr == '/')
+        dividir();
         n2 = '';
     }
-    
-    
+    ultOpr = op;
     console.log(n1);
     n2 = '';
     resParcial.innerHTML += op;
