@@ -1,33 +1,35 @@
 body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
+    background-color: #326789;
     padding: 0;
     margin: 0;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 #calculadora{
-    width: 300px;
-    background-color: red;
+    width: 340px;
+    background-color: #78A6C8;  
+    opacity: 0.9;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh;
+    height: 85vh;
     flex-direction: column;
     border: 2px solid black;
     border-radius: 5px;
 }
 
 #pantalla{
-    width: 250px;
+    width: 280px;
     height: 20vh;
     margin: 20px;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 5px;
-    background-color: white;
+    background-color: #E9EEF4;
     padding: 5px;
 }
 
@@ -56,6 +58,7 @@ button{
     font-size: 20px;
     height: 50px;
     width: 50px;
+    border-radius: 25px;
 }
 
 #botones-esp{
@@ -65,5 +68,28 @@ button{
 }
 
 .botones-esp{
-    width: 104px;
+    width: 105px;
+}
+
+.operacion, .botones-esp{
+    color:#E9EEF4;
+    background-color: #E65C4F;
+}
+
+footer{
+    padding-top: 20px;
+    color: #E9EEF4
+}
+
+a{
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:visited{
+    color: #E9EEF4;
+}
+
+a:hover{
+    color: #E65C4F;
 }
