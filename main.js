@@ -53,7 +53,7 @@ btnsuma.addEventListener('click', () => {operar('+')})
 btnresta.addEventListener('click', () => {operar('-')})
 btnprod.addEventListener('click', () => {operar('*')})
 btndiv.addEventListener('click', () => {operar('/')})
-igual.addEventListener('click', () => {eventoIgual(), pres.innerHTML = n1, console.log(n1)})
+igual.addEventListener('click', () => {eventoIgual(), pres.innerHTML = n1})
 borrar.addEventListener('click',() => {
     if(n2 != ""){
         n2 = n2.substring(0,n2.length-1);
