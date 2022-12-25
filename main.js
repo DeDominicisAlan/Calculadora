@@ -24,6 +24,7 @@ var n1 = "",n2 = "";
 var operadorClick = false;
 var ultOpr;
 var puntoClick = false;
+let borre = false;
 
 function clean(){
     n1 = "";
@@ -53,17 +54,31 @@ btnresta.addEventListener('click', () => {operar('-')})
 btnprod.addEventListener('click', () => {operar('*')})
 btndiv.addEventListener('click', () => {operar('/')})
 igual.addEventListener('click', () => {eventoIgual(), pres.innerHTML = n1, console.log(n1)})
-borrar.addEventListener('click',() => {})
+borrar.addEventListener('click',() => {
+    if(n2 != ""){
+        n2 = n2.substring(0,n2.length-1);
+        pres.innerHTML = n2;
+        resParcial.innerHTML = resParcial.innerHTML.substring(0, resParcial.innerHTML.length-1)
+    }else
+    if(n2 == "" && borre == false){
+        resParcial.innerHTML = resParcial.innerHTML.substring(0, resParcial.innerHTML.length-1);
+        operadorClick = false;
+        borre = true;
+    }else if(n1 != ""){
+        n1 = n1.substring(0,n1.length-1);
+        pres.innerHTML = n1;
+        resParcial.innerHTML = resParcial.innerHTML.substring(0, resParcial.innerHTML.length-1)
+        borre = false;
+    }
+})
 
 function suma(){
     if(n2 != "")
     n1 = parseFloat(n1) + parseFloat(n2);
-    console.log(n1)
 }
 
 function resta(){
     n1 = Math.floor(n1) - Math.floor(n2);
-    console.log(n1)
 }
 
 function multiplicar(){
@@ -77,6 +92,9 @@ function dividir(){
 }
 
 function eventoIgual(){
+    if(n1 == "" || isNaN(n1)){
+        n1 = 0;
+    }
     if(ultOpr == '+'){
         suma();
     }else if(ultOpr == '-'){
@@ -100,7 +118,6 @@ function numero(n){
         n2 += `${n}`;
         resParcial.innerHTML += n;
     }
-    console.log(n1)
 }
 
 function operar(op){
@@ -129,7 +146,6 @@ function operar(op){
         n2 = "";
     }
     ultOpr = op;
-    console.log(n1);
     n2 = "";
     resParcial.innerHTML += op;
 }
