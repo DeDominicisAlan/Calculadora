@@ -54,7 +54,9 @@ btnresta.addEventListener('click', () => {operar('-')})
 btnprod.addEventListener('click', () => {operar('*')})
 btndiv.addEventListener('click', () => {operar('/')})
 igual.addEventListener('click', () => {eventoIgual(), pres.innerHTML = n1})
-borrar.addEventListener('click',() => {
+borrar.addEventListener('click',() => {borrarUltDig()})
+
+function borrarUltDig(){
     if(n2 != ""){
         n2 = n2.substring(0,n2.length-1);
         pres.innerHTML = n2;
@@ -68,9 +70,8 @@ borrar.addEventListener('click',() => {
         n1 = n1.substring(0,n1.length-1);
         pres.innerHTML = n1;
         resParcial.innerHTML = resParcial.innerHTML.substring(0, resParcial.innerHTML.length-1)
-        borre = false;
     }
-})
+}
 
 function suma(){
     if(n2 != "")
@@ -149,3 +150,23 @@ function operar(op){
     n2 = "";
     resParcial.innerHTML += op;
 }
+
+document.addEventListener('keydown', (e) =>{
+    if(e.key >= 0 || e.key == 9){
+        numero(e.key);
+    }
+    if(e.key == '+')
+        operar('+')
+    if(e.key == '-')
+        operar('-')
+    if(e.key == '*')
+        operar('*')
+    if(e.key == '/')
+        operar('/')
+    if(e.key == 'Enter'){
+        eventoIgual();
+        pres.innerHTML = n1;
+    }   
+    if(e.key == 'Backspace')
+        borrarUltDig()
+})
